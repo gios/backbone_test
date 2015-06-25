@@ -20,17 +20,20 @@
   <script src="listModel.js"></script>
   <script src="listCollection.js"></script>
   <script src="listView.js"></script>
-  <script src="listsView.js"></script>
+  <script src="http://demos.telerik.com/kendo-ui/content/shared/js/products.js"></script>
 </head>
 
-<script type="text/template" id="listItem">
-  <p>Hello <%= name %></p>
-  <p>You are <%= age %></p>
-  <p>Your salary <%= salary %></p>
+<script type="text/x-kendo-template" id="listItem">
+  <div class="product">
+    <h1>Hello: #:name#</h1>
+    <h2>Age: #:age#</h2>
+    <h3>Salary: #:salary#</h3>
+  </div>
 </script>
 
-<body>
+<div class="demo-section k-header wide">
   <div id="listRender"></div>
-</body>
+  <div id="pager" class="k-pager-wrap"></div>
+</div>
 
 </html>
