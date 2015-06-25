@@ -39,8 +39,15 @@ $(function() {
       var inputFieldlistTemplate = _.template($("#inputFieldlistTemplate").html(), {});
       $("#addItemRender").html(inputFieldlistTemplate);
 
-      $("#ageField").kendoNumericTextBox();
-      $("#salaryField").kendoNumericTextBox();
+      $("#ageField").kendoNumericTextBox({
+        min: 1,
+        max: 150
+      });
+      $("#salaryField").kendoNumericTextBox({
+        min: 1,
+        max: 1000000,
+        step: 100
+      });
 
       var validator = $("#inputFieldlistForm").kendoValidator().data("kendoValidator"),
         status = $(".status");
