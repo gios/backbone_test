@@ -7,8 +7,12 @@ $(function() {
       this.collection = new listCollection();
       this.collection.add([mike, jack, russel, mike, jack, russel]);
       this.collection.on('add', function(e) {
-        console.log(e);
+        this.getData();
       }, this);
+      this.getData();
+    },
+
+    getData: function() {
       var products = this.collection.toJSON();
       var dataSource = new kendo.data.DataSource({
         data: products,
