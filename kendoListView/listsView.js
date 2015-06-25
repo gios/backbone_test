@@ -3,12 +3,12 @@ $(function() {
     el: $("#listRender"),
 
     initialize: function() {
+      _.bindAll(this, 'render', 'renderListItem');
       this.collection = new listCollection();
-      this.collection.bind("add", this.renderListItem());
+      this.collection.bind("add", this.renderListItem);
       this.collection.add(mike);
       this.collection.add(jack);
       this.collection.add(russel);
-      this.render();
     },
 
     render: function() {

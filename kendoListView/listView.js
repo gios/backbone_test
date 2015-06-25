@@ -4,12 +4,7 @@ var listView = Backbone.View.extend({
 
   render: function() {
     var listItemTemplate = _.template($("#listItem").html());
-    console.log(this.model);
-    this.$el.html(listItemTemplate({
-      name: "Mike",
-      age: 21,
-      salary: 1200
-    }));
+    this.$el.html(listItemTemplate(this.model.toJSON()));
     return this;
   }
 });
