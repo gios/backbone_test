@@ -39,7 +39,7 @@
   <ul id="fieldlist">
     <li>
       <label for="nameField" class="required">Your Name</label>
-      <input id="nameField" name="Name" type="text" class="k-textbox" placeholder="Enter name" required validationMessage="Enter {0}" style="width: 220px;" />
+      <input id="nameField" name="Name" type="text" class="k-textbox" placeholder="Enter name" maxlength="10" required validationMessage="Enter {0}" style="width: 220px;" />
     </li>
     <li>
       <label for="ageField">Age</label>
@@ -111,12 +111,14 @@
     border-width: thin;
     border-color: #e45200;
     border-style: inset;
+    border-radius: 10px;
     box-shadow: 0 0 5px #e45200;
   }
 
   .nameDisplay {
     text-align: center;
     text-transform: uppercase;
+    word-wrap: break-word;
   }
 
   .ageDisplay {
