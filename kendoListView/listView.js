@@ -5,7 +5,7 @@ $(function() {
     initialize: function() {
       _.bindAll(this, 'render');
       this.collection = new listCollection();
-      this.collection.add([mike, jack, russel, mike, jack, russel]);
+      this.collection.add(dataDefault);
       this.collection.on('add', function(e) {
         this.getData();
       }, this);
@@ -16,7 +16,7 @@ $(function() {
       var products = this.collection.toJSON();
       var dataSource = new kendo.data.DataSource({
         data: products,
-        pageSize: 3
+        pageSize: 12
       });
       dataSource.read();
       this.render(dataSource);

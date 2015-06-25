@@ -27,9 +27,11 @@
 </head>
 
 <script type="text/x-kendo-template" id="listItemTemplate">
-  <h1>Hello: #:name#</h1>
-  <h2>Age: #:age#</h2>
-  <h3>Salary: #:salary#</h3>
+  <div id="listDisplayArea">
+    <h1 class="nameDisplay">#:name#</h1>
+    <h3 class="ageDisplay"><b>Age:</b> #:age#</h3>
+    <h3 class="salaryDisplay"><b>Salary:</b> #:salary#</h3>
+  </div>
 </script>
 
 <script type="text/template" id="inputFieldlistTemplate">
@@ -88,13 +90,8 @@
     text-align: left;
   }
 
-  #fieldlist li .k-widget:not(.k-tooltip),
-  #fieldlist li .k-textbox {
-    margin: 0 5px 5px 0;
-  }
-
   .confirm {
-    padding-top: 1em;
+    padding-top: 0.5em;
   }
 
   .valid {
@@ -105,45 +102,48 @@
     color: red;
   }
 
-  #fieldlist li input[type="checkbox"] {
-    margin: 0 5px 0 0;
-  }
-
-  span.k-widget.k-tooltip-validation {
-    display;
-    inline-block;
-    width: 160px;
-    text-align: left;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    background: none;
-    box-shadow: none;
-    color: red;
-  }
-
-  .k-tooltip-validation .k-warning {
-    display: none;
-  }
-
   #addItemRender {
     margin: 3em;
+  }
+
+  #listDisplayArea {
+    float: left;
+    position: relative;
+    width: 250px;
+    height: 200px;
+    margin: 5px;
+    padding: 0;
+    border-width: thin;
+    border-color: #e45200;
+    border-style: inset;
+    box-shadow: 0 0 5px #e45200;
+  }
+
+  .nameDisplay {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .ageDisplay {
+    text-align: center;
+  }
+
+  .salaryDisplay {
+    text-align: center;
   }
 </style>
 
 <div class="row">
-  <div class="col-md-4"><div id="addItemRender"></div></div>
-  <div class="col-md-4"></div>
-  <div class="col-md-4"></div>
-</div>
 
-<div class="k-header wide">
-  <div class="row">
-    <div class="col-md-12">
-      <div id="listRender"></div>
-      <div id="pager" class="k-pager-wrap"></div>
-    </div>
+  <div class="col-md-2">
+    <div id="addItemRender"></div>
   </div>
+
+  <div class="col-md-10">
+    <div id="listRender"></div>
+    <div id="pager" class="k-pager-wrap"></div>
+  </div>
+
 </div>
 
 </html>
