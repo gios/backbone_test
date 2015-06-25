@@ -3,10 +3,6 @@ var listModel = Backbone.Model.extend({
     name: "Null",
     age: 0,
     salary: 0
-  },
-
-  initialize: function() {
-    console.log("listModel is initialize");
   }
 });
 
