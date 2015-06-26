@@ -15,4 +15,4 @@ function generatorData(from, to) {
   return dataTmp;
 }
 
-module.exports = generatorData(0, 100);
+module.exports = generatorData(0, 500);

@@ -43,11 +43,9 @@ $(function() {
 
     searchItem: function(value) {
       var self = this;
-      var searchResult = this.collection.where({name: value});
+      var searchResult = this.collection.where({name: value.toLowerCase()});
       this.searchCollection.add(searchResult);
       this.getData(this.searchCollection);
-      var backToAllTemplate = _.template($("#backToAllTemplate").html(), {});
-      $("#backToAllRender").html(backToAllTemplate);
       $("#backToAllRender").click(function() {
         self.getData(self.collection);
         self.searchCollection.reset();
@@ -56,6 +54,9 @@ $(function() {
 
     render: function(dataSource) {
       var self = this;
+
+      var backToAllTemplate = _.template($("#backToAllTemplate").html(), {});
+      $("#backToAllRender").html(backToAllTemplate);
 
       var searchListTemplate = _.template($("#searchListTemplate").html(), {});
       $("#addItemRender").html(searchListTemplate);
