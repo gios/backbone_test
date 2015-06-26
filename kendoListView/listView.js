@@ -4,18 +4,26 @@ $(function() {
 
     initialize: function() {
       _.bindAll(this, 'render');
+      var self = this;
       this.collection = new listCollection();
-      this.collection.fetch();
-      this.collection.on('add', function(e) {
-        this.getData();
-      }, this);
+      this.collection.fetch({
+        success: function() {
+          self.getData();
+        },
+        error: function() {
+          console.error("Fetch error");
+        }
+      });
+      // this.collection.on('add', function(e) {
+      //   console.log(e);
+      // }, this);
     },
 
     getData: function() {
       var products = this.collection.toJSON();
       var dataSource = new kendo.data.DataSource({
         data: products,
-        pageSize: 21
+        pageSize: 24
       });
       dataSource.read();
       this.render(dataSource);
