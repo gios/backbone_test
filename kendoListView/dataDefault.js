@@ -119,3 +119,5 @@ var dataDefault = [{
   age: 21,
   salary: 1200
 }];
+
+module.exports = dataDefault;

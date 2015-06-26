@@ -5,7 +5,7 @@ $(function() {
     initialize: function() {
       _.bindAll(this, 'render');
       this.collection = new listCollection();
-      this.collection.add(dataDefault);
+      this.collection.fetch();
       this.collection.on('add', function(e) {
         this.getData();
       }, this);
