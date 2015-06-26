@@ -9,14 +9,14 @@ $(function() {
       this.collection.fetch({
         success: function() {
           self.getData();
+          self.collection.on('add', function(e) {
+            self.getData();
+          });
         },
         error: function() {
           console.error("Fetch error");
         }
       });
-      // this.collection.on('add', function(e) {
-      //   console.log(e);
-      // }, this);
     },
 
     getData: function() {
