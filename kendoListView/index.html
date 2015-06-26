@@ -23,11 +23,12 @@
   <script src="listModel.js"></script>
   <script src="listCollection.js"></script>
   <script src="listView.js"></script>
+  <script src="searchCollection.js"></script>
 </head>
 
 <script type="text/x-kendo-template" id="listItemTemplate">
   <div id="listDisplayArea">
-    <h1 class="nameDisplay">#:name#</h1>
+    <h2 class="nameDisplay">#:name#</h2>
     <h3 class="ageDisplay"><b>Age:</b> #:age#</h3>
     <h3 class="salaryDisplay"><b>Salary:</b> #:salary#</h3>
   </div>
@@ -57,6 +58,16 @@
     </li>
   </ul>
 </form>
+</script>
+
+<script type="text/template" id="searchListTemplate">
+  <label for="searchField">Find</label>
+  <input id="searchField" name="Name" type="text" class="k-textbox" pattern="[a-zA-Z]+" placeholder="Search..." maxlength="10" style="width: 220px;" />
+  <button id="searchButton" class="k-button k-primary">Search</button>
+</script>
+
+<script type="text/template" id="backToAllTemplate">
+  <button id="backToAllButton" class="k-button k-primary">Back To All</button>
 </script>
 
 <style>
@@ -100,6 +111,18 @@
     margin: 3em;
   }
 
+  #searchField {
+    margin-bottom: 1em;
+  }
+
+  #searchButton {
+    margin-bottom: 2em;
+  }
+
+  #backToAllButton {
+    margin: 1em;
+  }
+
   #listDisplayArea {
     float: left;
     position: relative;
@@ -136,6 +159,7 @@
   </div>
 
   <div class="col-md-10">
+    <div id="backToAllRender"></div>
     <div id="listRender"></div>
     <div id="pager" class="k-pager-wrap"></div>
   </div>

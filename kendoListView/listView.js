@@ -6,11 +6,12 @@ $(function() {
       _.bindAll(this, 'render');
       var self = this;
       this.collection = new listCollection();
+      this.searchCollection = new searchCollection();
       this.collection.fetch({
         success: function() {
-          self.getData();
+          self.getData(self.collection);
           self.collection.on('add', function(e) {
-            self.getData();
+            self.getData(self.collection);
           });
         },
         error: function() {
@@ -19,8 +20,8 @@ $(function() {
       });
     },
 
-    getData: function() {
-      var products = this.collection.toJSON();
+    getData: function(data) {
+      var products = data.toJSON();
       var dataSource = new kendo.data.DataSource({
         data: products,
         pageSize: 24
@@ -40,11 +41,27 @@ $(function() {
       });
     },
 
+    searchItem: function(value) {
+      var self = this;
+      var searchResult = this.collection.where({name: value});
+      this.searchCollection.add(searchResult);
+      this.getData(this.searchCollection);
+      var backToAllTemplate = _.template($("#backToAllTemplate").html(), {});
+      $("#backToAllRender").html(backToAllTemplate);
+      $("#backToAllRender").click(function() {
+        self.getData(self.collection);
+        self.searchCollection.reset();
+      });
+    },
+
     render: function(dataSource) {
       var self = this;
 
+      var searchListTemplate = _.template($("#searchListTemplate").html(), {});
+      $("#addItemRender").html(searchListTemplate);
+
       var inputFieldlistTemplate = _.template($("#inputFieldlistTemplate").html(), {});
-      $("#addItemRender").html(inputFieldlistTemplate);
+      $("#addItemRender").append(inputFieldlistTemplate);
 
       $("#ageField").kendoNumericTextBox({
         min: 1,
@@ -58,6 +75,10 @@ $(function() {
 
       var validator = $("#inputFieldlistForm").kendoValidator().data("kendoValidator"),
         status = $(".status");
+
+      $("#searchButton").click(function(e) {
+        self.searchItem($("#searchField").val());
+      });
 
       $("#inputFieldlistForm").submit(function(event) {
         event.preventDefault();

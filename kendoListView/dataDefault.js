@@ -6,7 +6,7 @@ function generatorData(from, to) {
   var dataTmp = [];
   var objectTmp = {};
   for (var i = from; i < to; i++) {
-    objectTmp.name = chance.first();
+    objectTmp.name = chance.first().toLowerCase();
     objectTmp.age = chance.age();
     objectTmp.salary = chance.integer({min: 1000, max: 10000});
     dataTmp.push(objectTmp);
