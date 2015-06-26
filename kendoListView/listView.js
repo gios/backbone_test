@@ -65,7 +65,7 @@ $(function() {
           status.text("Added to list!")
             .removeClass("invalid")
             .addClass("valid");
-          self.addItem(event);
+          self.addItem();
         } else {
           status.text("Oops! Some errors!")
             .removeClass("valid")
