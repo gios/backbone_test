@@ -9,14 +9,13 @@ $(function() {
       this.collection.on('add', function(e) {
         this.getData();
       }, this);
-      this.getData();
     },
 
     getData: function() {
       var products = this.collection.toJSON();
       var dataSource = new kendo.data.DataSource({
         data: products,
-        pageSize: 12
+        pageSize: 21
       });
       dataSource.read();
       this.render(dataSource);

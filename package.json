@@ -9,6 +9,7 @@
   "author": "Gios",
   "license": "ISC",
   "dependencies": {
+    "chance": "^0.7.6",
     "express": "^4.13.0"
   }
 }
