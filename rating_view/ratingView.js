@@ -1,6 +1,6 @@
 $(function() {
   var ratingView = Backbone.View.extend({
-    el: $("#listRender"),
+    el: $("#ratingRender"),
 
     initialize: function() {
       _.bindAll(this, 'render');
